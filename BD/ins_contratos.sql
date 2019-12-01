@@ -1,5 +1,4 @@
 INSERT INTO contratos VALUES(400, 101, TO_DATE('07/01/2018','dd/MM/yyyy'), TO_DATE('07/01/2018','dd/MM/yyyy'), 828116, 2);
-
 INSERT INTO contratos VALUES(401, 102, TO_DATE('21/03/2018','dd/MM/yyyy'), TO_DATE('21/03/2018','dd/MM/yyyy'), 828116, 1);
 INSERT INTO contratos VALUES(402, 103, TO_DATE('07/01/2018','dd/MM/yyyy'), TO_DATE('07/01/2018','dd/MM/yyyy'), 828116, 4);
 INSERT INTO contratos VALUES(403, 104, TO_DATE('21/03/2018','dd/MM/yyyy'), TO_DATE('21/03/2018','dd/MM/yyyy'), 828116, 1);

@@ -8,4 +8,5 @@ CONN pf/pf;
 @cc_empleados;
 @cc_contratos;
 
-@insdb;
+@ins_empleados;
+@ins_contratos;
