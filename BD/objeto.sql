@@ -1,21 +1,13 @@
-create or replace TYPE nominaobj as object (
+create or replace TYPE contratosobj as object (
 
-	type tab_con is table of empleados%rowtype;
-	member procedure add_contratos(id number);
+	id number, 
+	id_empleado number,
+	fecha_inicio Date,
+	fecha_fin Date,
+	salario number,
+	por_com number
 );
 
-create or replace TYPE BODY nominaobj as
-
-	member procedure add_contratos(id number) as
-		
-	BEGIN
-		cursor cur is 
-		select * from contratos c
-		where c.id_empleado = id_empleado;
-
-		for i in cur
-		loop
-
-		end loop
-
-	END;
+create or replace TYPE BODY contratosobj as
+	
+END;
