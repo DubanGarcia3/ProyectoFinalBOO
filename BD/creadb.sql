@@ -2,7 +2,7 @@
 GRANT CONNECT, RESOURCE TO pf;
 CONN pf/pf;
 */
-@objeto;
+--@objeto;
 @ct_empleados;
 @ct_contratos;
 

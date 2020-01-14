@@ -1,4 +1,8 @@
 import cx_Oracle
-conn = cx_Oracle.connect('pf','pf','XE')
-
-print(conn.version)
+con = cx_Oracle.connect('pf','pf','XE')
+cur = con.cursor()
+cur.execute('select count(id) from lista_contratos')
+for result in cur:
+	print result
+cur.close()
+con.close()
