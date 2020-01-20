@@ -1,4 +1,4 @@
-CREATE TABLE contratos(
+ CREATE TABLE contratos(
 	id number(4) not null,
 	id_empleado number(10) not null,
 	fecha_inicio date not null,
