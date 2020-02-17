@@ -22,12 +22,12 @@ objType = con.gettype("CONTRATOSOBJ")
 # convert a Python Building object to the Oracle user defined type UDT_BUILDING
 def ContratoInConverter(value):
     obj = objType.newobject()
-    obj.id = id
-    obj.id_empleado = id_empleado
-    obj.fecha_inicio = fecha_inicio
-    obj.fecha_fin = fecha_fin
-    obj.salario = salario
-    obj.por_com = por_com
+    obj.id = value.id
+    obj.id_empleado = value.id_empleado
+    obj.fecha_inicio = value.fecha_inicio
+    obj.fecha_fin = value.fecha_fin
+    obj.salario = value.salario
+    obj.por_com = value.por_com
     return obj
 
 def InputTypeHandler(cursor, value, numElements):
@@ -42,7 +42,7 @@ cur.inputtypehandler = InputTypeHandler
 arr = [(2,contrato)]
 add = ("insert into lista_contratos"
                "VALUES (?,?)")
-cur.execute("insert into lista_contratos values (:1,:2)", arr)
+cur.execute("insert into lista_contratos values (:1,:2)", (2,contrato))
 
 con.commit()
 cur.close()
