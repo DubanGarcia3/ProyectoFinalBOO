@@ -1,0 +1,5 @@
+CREATE TABLE EMPLEADOS (
+   id NUMBER,
+   empleado EMPLEADO
+);
+/
