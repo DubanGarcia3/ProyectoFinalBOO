@@ -15,7 +15,7 @@ class Contrato(object):
 rpt_time = time.strftime('%Y-%m-%d %H:%M:%S')
 rpt_time
 d = datetime.datetime.now()
-contrato = Contrato(400, 101, d, d, 11111, 2)
+contrato = Contrato(500, 110, d, d, 11111, 2)
 
 
 # Get Python representation of the Oracle user defined type UDT_BUILDING
@@ -30,12 +30,6 @@ def ContratoInConverter(value):
     obj.FECHA_FIN = value.FECHA_FIN
     obj.SALARIO = value.SALARIO
     obj.POR_COM = value.POR_COM
-    obj.id = value.id
-    obj.id_empleado = value.id_empleado
-    obj.fecha_inicio = value.fecha_inicio
-    obj.fecha_fin = value.fecha_fin
-    obj.salario = value.salario
-    obj.por_com = value.por_com
     return obj
 
 def InputTypeHandler(cursor, value, numElements):
@@ -47,11 +41,11 @@ def InputTypeHandler(cursor, value, numElements):
 # With the input type handler, the bound Python object is converted
 # to the required Oracle object before being inserted
 cur.inputtypehandler = InputTypeHandler
-arr = (2, contrato)
+arr = (3, contrato)
 add = ("insert into lista_contratos"
                "VALUES (?,?)")
 cur.execute("insert into lista_contratos (id, contrato) values (:1,:2)", arr)
-cur.execute("insert into lista_contratos values (:1,:2)", (2,contrato))
+
 con.commit()
 cur.close()
 con.close()
