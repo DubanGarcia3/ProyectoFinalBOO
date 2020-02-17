@@ -1,5 +1,5 @@
 import cx_Oracle
-
+import time
 con = cx_Oracle.connect('pf','pf','XE')
 cur = con.cursor()
 class Contrato(object):
@@ -11,14 +11,16 @@ class Contrato(object):
         self.salario = salario
         self.por_com = por_com
 
-contrato = Contrato(400, 101, TO_DATE('07/01/2018','dd/MM/yyyy'), TO_DATE('07/01/2018','dd/MM/yyyy'), 828116, 2);
+rpt_time = time.strftime('%Y-%m-%d %H:%M:%S')
+rpt_time
+contrato = Contrato(400, 101, rpt_time, rpt_time, 11111, 2);
 
 
 # Get Python representation of the Oracle user defined type UDT_BUILDING
 objType = con.gettype("CONTRATOSOBJ")
 
 # convert a Python Building object to the Oracle user defined type UDT_BUILDING
-def EmpleadoInConverter(value):
+def ContratoInConverter(value):
     obj = objType.newobject()
     obj.id = id
     obj.id_empleado = id_empleado
@@ -29,15 +31,17 @@ def EmpleadoInConverter(value):
     return obj
 
 def InputTypeHandler(cursor, value, numElements):
-    if isinstance(value, Empleado):
+    if isinstance(value, Contrato):
         return cursor.var(cx_Oracle.OBJECT, arraysize = numElements,
-                inconverter = EmpleadoInConverter, typename = objType.name)
+                inconverter = ContratoInConverter, typename = objType.name)
 
 
 # With the input type handler, the bound Python object is converted
 # to the required Oracle object before being inserted
 cur.inputtypehandler = InputTypeHandler
-cur.execute("insert into empleados_obj values (:1, :2)", (1, contrato))
+add = ("insert into lista_contratos"
+               "VALUES (2, %s)")
+cur.execute("insert into lista_contratos values (1,",contrato)
 
 con.commit()
 cur.close()

@@ -39,7 +39,7 @@ def dumpContrato(contrato, con ,prefix = ""):
             con.por_com = repr(value)
         print(prefix + "   " + attr.name + ":", repr(value))
 
-
+"""datetime = yyyy/mm/dd:hh:mi:ssam"""
 cur.execute('select l.contrato from lista_contratos l')
 for obj, in cur:
     contrato = Contrato()
