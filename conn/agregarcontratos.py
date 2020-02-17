@@ -39,9 +39,10 @@ def InputTypeHandler(cursor, value, numElements):
 # With the input type handler, the bound Python object is converted
 # to the required Oracle object before being inserted
 cur.inputtypehandler = InputTypeHandler
+arr = [(2,contrato)]
 add = ("insert into lista_contratos"
-               "VALUES (2, %s)")
-cur.execute("insert into lista_contratos values (1,",contrato)
+               "VALUES (?,?)")
+cur.execute("insert into lista_contratos values (:1,:2)", arr)
 
 con.commit()
 cur.close()

@@ -1,15 +1,11 @@
-/*CREATE USER pf identified by pf;
+CREATE USER pf identified by pf;
 GRANT CONNECT, RESOURCE TO pf;
 CONN pf/pf;
-*/
---@objeto;
-@ct_empleados;
-@ct_contratos;
 
-@cc_empleados;
-@cc_contratos;
+@objeto;
+@ct_lista_contratos;
 
+@ins_listacontratos;
 
 
 --@ins_empleados;
---@ins_contratos;
