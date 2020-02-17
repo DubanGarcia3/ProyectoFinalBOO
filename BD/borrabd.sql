@@ -1,4 +1,3 @@
-drop table empleados cascade constraints;
-drop table contratos cascade constraints;
+drop table lista_contratos cascade constraints;
 --LIMPIAR PAPELERA
 purge recyclebin;
