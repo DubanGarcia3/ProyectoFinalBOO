@@ -4,8 +4,7 @@ CONN pf/pf;
 
 @objeto;
 @ct_lista_contratos;
-
-@ins_listacontratos;
+@ins_lista_contratos;
 
 
 --@ins_empleados;
