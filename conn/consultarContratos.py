@@ -14,9 +14,16 @@ class Contrato(object):
         self.fecha_fin = fecha_fin
         self.salario = salario
         self.por_com = por_com
+    def __init__(self):
+        self.id = 0
+        self.id_empleado = 0
+        self.fecha_inicio = 0
+        self.fecha_fin = 0
+        self.salario = 0
+        self.por_com = 0
 
 def dumpContrato(contrato, con ,prefix = ""):
-    for attr in empleado.type.attributes:
+    for attr in contrato.type.attributes:
         value = getattr(contrato, attr.name)
         if attr.name == 'ID' :
             con.id = repr(value)
