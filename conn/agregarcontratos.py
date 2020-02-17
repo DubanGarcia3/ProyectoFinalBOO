@@ -1,19 +1,21 @@
 import cx_Oracle
 import time
+import datetime
 con = cx_Oracle.connect('pf','pf','XE')
 cur = con.cursor()
 class Contrato(object):
-    def __init__(self, id, id_empleado, fecha_inicio, fecha_fin, salario, por_com):
-        self.id = id
-        self.id_empleado = id_empleado
-        self.fecha_inicio =fecha_inicio
-        self.fecha_fin = fecha_fin
-        self.salario = salario
-        self.por_com = por_com
+    def __init__(self, ID, ID_EMPLEADO, FECHA_INICIO, FECHA_FIN, SALARIO, POR_COM):
+        self.ID = ID
+        self.ID_EMPLEADO = ID_EMPLEADO
+        self.FECHA_INICIO = FECHA_INICIO
+        self.FECHA_FIN = FECHA_FIN
+        self.SALARIO = SALARIO
+        self.POR_COM = POR_COM
 
 rpt_time = time.strftime('%Y-%m-%d %H:%M:%S')
 rpt_time
-contrato = Contrato(400, 101, rpt_time, rpt_time, 11111, 2);
+d = datetime.datetime.now()
+contrato = Contrato(400, 101, d, d, 11111, 2)
 
 
 # Get Python representation of the Oracle user defined type UDT_BUILDING
@@ -22,12 +24,12 @@ objType = con.gettype("CONTRATOSOBJ")
 # convert a Python Building object to the Oracle user defined type UDT_BUILDING
 def ContratoInConverter(value):
     obj = objType.newobject()
-    obj.id = id
-    obj.id_empleado = id_empleado
-    obj.fecha_inicio = fecha_inicio
-    obj.fecha_fin = fecha_fin
-    obj.salario = salario
-    obj.por_com = por_com
+    obj.ID = value.ID
+    obj.ID_EMPLEADO = value.ID_EMPLEADO
+    obj.FECHA_INICIO = value.FECHA_INICIO
+    obj.FECHA_FIN = value.FECHA_FIN
+    obj.SALARIO = value.SALARIO
+    obj.POR_COM = value.POR_COM
     return obj
 
 def InputTypeHandler(cursor, value, numElements):
@@ -39,10 +41,10 @@ def InputTypeHandler(cursor, value, numElements):
 # With the input type handler, the bound Python object is converted
 # to the required Oracle object before being inserted
 cur.inputtypehandler = InputTypeHandler
-arr = [(2,contrato)]
+arr = (2, contrato)
 add = ("insert into lista_contratos"
                "VALUES (?,?)")
-cur.execute("insert into lista_contratos values (:1,:2)", arr)
+cur.execute("insert into lista_contratos (id, contrato) values (:1,:2)", arr)
 
 con.commit()
 cur.close()
